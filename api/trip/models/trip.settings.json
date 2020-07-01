@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trips",
+  "info": {
+    "name": "trip"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "published_at": {
+      "type": "datetime"
+    },
+    "pictures": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "season": {
+      "type": "enumeration",
+      "enum": [
+        "spring",
+        "summer",
+        "automn",
+        "winter"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "location": {
+      "model": "location"
+    }
+  }
+}
